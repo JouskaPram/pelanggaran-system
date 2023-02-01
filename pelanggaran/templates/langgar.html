@@ -1,13 +1,37 @@
 {%extends 'base.html' %} {%block content%}
-<div class="row">
-    <div class="col-md-6">
-        <form  method="post">
-            {%csrf_token%}
-            <input type="text" name="cari" class="form-control mt-3" placeholder="Cari Nama Siswa">
-        </form>
+<!-- navbar start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bolder" href="#">SMKN4 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+        </li>
+       
+    
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{%url 'tambah_pelanggar'%}" tabindex="-1" aria-disabled="true">Tambah</a>
+        </li>
+      </ul>
+      <form class="d-flex" method="post">
+        {%csrf_token%}
+        <input class="form-control me-2" name="cari" type="search" placeholder="Search" aria-label="Search">
+       
+      </form>
     </div>
-</div>
+  </div>
+</nav>
+<!-- navbar end -->
+<div class="container">
+
+
 <h2 class="text-center fw-bolder text-dark mt-3 " >Data Pelanggar</h2>
+
+<h3 class="text-dark ">Jumlah Murid:{{total}}</h3>
 <table class="table mt-3">
   <thead class="bg-dark py-2 text-light fw-bold text-center">
     <tr>
@@ -26,4 +50,5 @@
     </tr {%endfor%}>
   </tbody>
 </table>
+</div>
 {%endblock%}

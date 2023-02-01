@@ -35,7 +35,7 @@ def tambah_pelanggar(req):
         konteks = {
             'form':form,
         }
-        return render(req,'pelanggar.html',konteks)
+        return redirect("/pelanggar")
     else:
         form = FormPelanggar()
         konteks ={
@@ -51,17 +51,22 @@ def siswa(req):
     return render(req,'siswa.html',konteks)
 
 def pelanggaran(req):
+    
     if req.POST:
         keyword = req.POST['cari']
-        langgar = pelanggar.objects.filter(siswa__nama_siswa__contains=keyword)
+        langgar = pelanggar.objects.filter(siswa__nama_siswa__contains=keyword).order_by('-id')
+        total = langgar.count()
         konteks = {
             'langgar':langgar,
+            'total':total,
         }
         return render(req,'langgar.html',konteks)
     else:
         
-        langgar = pelanggar.objects.all()
+        langgar = pelanggar.objects.all().order_by('-id')
+        total = langgar.count()
         konteks = {
-            'langgar' : langgar
+            'langgar' : langgar,
+            'total' : total,
     }
     return render(req,'langgar.html',konteks)
