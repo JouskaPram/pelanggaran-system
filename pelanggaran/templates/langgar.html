@@ -1,0 +1,29 @@
+{%extends 'base.html' %} {%block content%}
+<div class="row">
+    <div class="col-md-6">
+        <form  method="post">
+            {%csrf_token%}
+            <input type="text" name="cari" class="form-control mt-3" placeholder="Cari Nama Siswa">
+        </form>
+    </div>
+</div>
+<h2 class="text-center fw-bolder text-dark mt-3 " >Data Pelanggar</h2>
+<table class="table mt-3">
+  <thead class="bg-dark py-2 text-light fw-bold text-center">
+    <tr>
+      <td>Nama Pelanggar</td>
+      <td>Kelas</td>
+      <td>Jenis Pelanggaran</td>
+      <td>tanggal</td>
+    </tr>
+  </thead>
+  <tbody class="bg-light py-3">
+    <tr {%for p in langgar%}>
+      <td>{{p.siswa.nama_siswa}}</td>
+      <td>{{p.siswa.kelas}}</td>
+      <td>{{p.pelanggaran}}</td>
+      <td>{{p.tanggal}}</td>
+    </tr {%endfor%}>
+  </tbody>
+</table>
+{%endblock%}

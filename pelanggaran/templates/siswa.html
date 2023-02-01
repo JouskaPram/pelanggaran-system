@@ -1,0 +1,21 @@
+{%extends 'base.html'%} {%block content%}
+<!-- <ul {%for sis in siswa%}>
+  <li>{{sis.nama_siswa}}</li>
+  <li>{{sis.kelas}}</li>
+</ul {%endfor%}> -->
+<h2>Siswa SMKN 4</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Nama</td>
+      <td>Kelas</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr {%for s in siswa%}>
+      <td>{{s.nama_siswa}}</td>
+      <td>{{s.kelas}}</td>
+    </tr {%endfor%}>
+  </tbody>
+</table>
+{%endblock%}
