@@ -11,10 +11,31 @@
         <li class="nav-item">
           <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
-       
+               <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+             <li class="nav-item">
+          <a class="nav-link active text-dark" href="{%url 'tambah_siswa'%}" tabindex="-1" aria-disabled="true">Tambah Siswa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-dark" href="{%url 'tambah_kelas'%}" tabindex="-1" aria-disabled="true">Tambah Kelas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-dark" href="{%url 'tambah_pelanggar'%}" tabindex="-1" aria-disabled="true">Tambah Pelanggaran</a>
+        </li>
+          </ul>
+        </li>
+
     
         <li class="nav-item">
-          <a class="nav-link active text-light" href="{%url 'tambah_pelanggar'%}" tabindex="-1" aria-disabled="true">Tambah</a>
+          <a class="nav-link active text-light" href="{%url 'tambah_pelanggar'%}" tabindex="-1" aria-disabled="true">Tambah Pelanggar</a>
+        </li>
+      
+    
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{%url 'keluar'%}" tabindex="-1" aria-disabled="true">Keluar</a>
         </li>
       </ul>
       <form class="d-flex" method="post">
@@ -31,22 +52,26 @@
 
 <h2 class="text-center fw-bolder text-dark mt-3 " >Data Pelanggar</h2>
 
-<h3 class="text-dark ">Jumlah Murid:{{total}}</h3>
-<table class="table mt-3">
-  <thead class="bg-dark py-2 text-light fw-bold text-center">
+<p class="text-dark fw-bolder ">Jumlah Pelanggar:{{total}} orang</p>
+<table class="table mt-3 table-striped">
+  <thead class="bg-dark  text-light fw-bold text-center upper">
     <tr>
-      <td>Nama Pelanggar</td>
-      <td>Kelas</td>
-      <td>Jenis Pelanggaran</td>
-      <td>tanggal</td>
+      <th>Nama Siswa</th>
+      <th >Kelas</th>
+      <th class="mobile">pelanggaran</th>
+      <th>tanggal</th>
+      <th >penulis</th>
+
     </tr>
   </thead>
   <tbody class="bg-light py-3">
     <tr {%for p in langgar%}>
-      <td>{{p.siswa.nama_siswa}}</td>
-      <td>{{p.siswa.kelas}}</td>
-      <td>{{p.pelanggaran}}</td>
+      <td><a href="/detail/{{p.siswa.id}}" class="text-decoration-none">{{p.siswa.nama_siswa}}</a></td>
+      <td >{{p.siswa.kelas}}</td>
+      <td class="mobile">{{p.pelanggaran}}</td>
       <td>{{p.tanggal}}</td>
+      <td >{{p.user}}</td>
+     
     </tr {%endfor%}>
   </tbody>
 </table>

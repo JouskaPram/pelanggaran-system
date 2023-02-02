@@ -1,0 +1,60 @@
+{%extends 'base.html' %} {%block content%}
+<!-- navbar start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bolder" href="#">SMKN4 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="{%url 'adminpage'%}">Home</a>
+        </li>
+       
+    
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{%url 'tambah_pelanggar'%}" tabindex="-1" aria-disabled="true">Tambah</a>
+        </li>
+    
+        <li class="nav-item">
+          <a class="nav-link active text-light" href="{%url 'keluar'%}" tabindex="-1" aria-disabled="true">Keluar</a>
+        </li>
+      </ul>
+      <form class="d-flex" method="post">
+        {%csrf_token%}
+        <input class="form-control me-2" name="cari" type="search" placeholder="Search" aria-label="Search">
+       
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- navbar end -->
+<div class="container mt-5">
+
+
+
+
+<h5>catatan pelanggar: {{nama}}</h5>
+<p>{{pesan}}</p>
+<p>melakukan pelanggaran sebanyak {{total}} kali</p>
+<table class="table mt-3 table-striped" style="width: 40%;">
+  <thead class="bg-dark  text-light fw-bold text-center upper">
+    <tr>
+      <th>Nama Siswa</th>   
+      <th>pelanggaran</th>
+   
+    </tr>
+  </thead>
+  <tbody class="bg-light py-3">
+    <tr {%for p in catatan%}>
+      <td>{{p.siswa.nama_siswa}}</td> 
+      <td>{{p.pelanggaran}}</td>
+  
+   
+    
+    </tr {%endfor%}>
+  </tbody>
+</table>
+</div>
+{%endblock%}

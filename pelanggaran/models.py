@@ -1,5 +1,5 @@
 from django.db.models import *
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Kelas(Model):
     nama_kelas = CharField(max_length=40)
@@ -20,5 +20,6 @@ class pelanggar(Model):
     tanggal = DateTimeField(auto_now=True)
     siswa = ForeignKey(Siswa,on_delete=CASCADE)
     pelanggaran = ForeignKey(Pelanggaran,on_delete=CASCADE)
+    user = ForeignKey(User,on_delete=CASCADE)
     def __str__(self):
         return self.siswa.nama_siswa

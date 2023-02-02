@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import *
 from django import forms
-
+from django.contrib.auth.models import User
 
 class FormSiswa(ModelForm):
     class Meta:
@@ -11,8 +11,11 @@ class FormSiswa(ModelForm):
 class FormPelanggar(ModelForm):
     class Meta:
         model = pelanggar
-        fields = "__all__"
+        exclude = ('user',)
 
-    # widget ={
-    #     'Siswa' : forms.Select({'class':'form-control'}),
-    # }
+        widgets = {
+            'siswa': forms.Select(attrs={'class': 'form-control'}),
+            'pelanggaran': forms.Select(attrs={'class': 'form-control'}),
+
+        }
+    

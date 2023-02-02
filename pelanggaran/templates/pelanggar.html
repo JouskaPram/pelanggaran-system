@@ -4,7 +4,9 @@
     <div class="card p-3 m-auto mt-5">
       <h3 class="text-center py-3 text-dark">Tambah Pelanggar</h3>
       <form method="post">
-        {%csrf_token%} {{form.as_p }}
+        {%csrf_token%} {%if messages%} {%for m in messages%}
+        <div class="alert alert-success" role="alert">{{m}}</div>
+        {%endfor%} {%endif%}{{form.as_p }}
         <button type="submit" class="btn btn-primary">Tambah</button>
       </form>
     </div>
