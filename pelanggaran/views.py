@@ -13,6 +13,18 @@ def tambah_kelas(req):
         ).save()
     return render(req,'tambah-kelas.html')
 @login_required(login_url='masuk')
+def tambah_pelanggaran(req):
+    if req.POST:
+        Pelanggaran(
+            jenis_pelanggaran = req.POST['jenis_pelanggaran'],
+
+        ).save()
+        messages.success(req,"data berhasil di tambahkan")
+        return redirect('/tambahpelanggaran')
+    else:
+      
+        return render(req,'tambah-pelanggaran.html')
+@login_required(login_url='masuk')
 def tambah_siswa(req):
     if req.POST:
      form = FormSiswa(req.POST)
@@ -32,7 +44,8 @@ def tambah_siswa(req):
 # add pelanggar
 @login_required(login_url='masuk')
 def tambah_pelanggar(req):
-    if req.POST:
+
+    if req.POST:     
      form = FormPelanggar(req.POST,instance=pelanggar(user=req.user))
      if form.is_valid:
         form.save()
@@ -41,6 +54,7 @@ def tambah_pelanggar(req):
         konteks = {
             'form':form,
         }
+      
         return redirect("/tambahpelanggar",konteks)
     else:
         form = FormPelanggar()
@@ -55,28 +69,17 @@ def siswa(req):
         'siswa' : siswa
     }
     return render(req,'siswa.html',konteks)
-@login_required(login_url='masuk')
+
 def pelanggaran(req):
-    all = pelanggar.objects.all()
-    if req.POST:
-        keyword = req.POST['cari']
-        langgar = pelanggar.objects.filter(siswa__nama_siswa__contains=keyword).order_by('-id')[:10]
-        total = all.count()
-        konteks = {
-            'langgar':langgar,
-            'total':total           
-        }
-        
-    else:
         all = pelanggar.objects.all()
-        langgar = pelanggar.objects.all().order_by('-id')[:10]
+        langgar = pelanggar.objects.all().order_by('-id')
         total = all.count()
         konteks = {
             'langgar' : langgar,
             'total' : total,
             
     }
-    return render(req,'langgar.html',konteks)
+        return render(req,'homepage.html',konteks)
 
 def detail_siswa(req,id_siswa):
    
@@ -96,3 +99,14 @@ def detail_siswa(req,id_siswa):
   
     }
     return render(req,'detail-pelanggar.html',konteks)
+
+@login_required(login_url='masuk')
+def adminpage(req):
+    nama = Siswa.objects.all()
+
+    konteks ={
+        'nama':nama,
+       
+    }
+    return render(req,'adminpage.html',konteks)
+

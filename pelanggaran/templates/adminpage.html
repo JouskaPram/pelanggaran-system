@@ -1,0 +1,103 @@
+{%extends 'base.html'%} {%block content%}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bolder" href="#">SMKN4 </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            aria-current="page"
+            href="{%url 'homepage'%}"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-light"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nav-item">
+              <a
+                class="nav-link active text-dark"
+                href="{%url 'tambah_siswa'%}"
+                tabindex="-1"
+                aria-disabled="true"
+                >Tambah Siswa</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-dark"
+                href="{%url 'tambah_kelas'%}"
+                tabindex="-1"
+                aria-disabled="true"
+                >Tambah Kelas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-dark"
+                href="{%url 'tambahpelanggaran'%}"
+                tabindex="-1"
+                aria-disabled="true"
+                >Tambah Pelanggaran</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            href="{%url 'tambah_pelanggar'%}"
+            tabindex="-1"
+            aria-disabled="true"
+            >Tambah Pelanggar</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            href="{%url 'keluar'%}"
+            tabindex="-1"
+            aria-disabled="true"
+            >Keluar</a
+          >
+        </li>
+      </ul>
+      <form class="d-flex" method="post">
+        {%csrf_token%}
+        <input
+          class="form-control me-2"
+          name="cari"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+    </div>
+  </div>
+</nav>
+
+<p>selamat datang {{user}}</p>
+
+{%endblock%}

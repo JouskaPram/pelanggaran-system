@@ -1,13 +1,31 @@
 {%extends 'base.html'%} {%block content%}
-<div class="row">
-  <div class="col-md-4 m-auto">
-    <div class="card">
-      <h3 class="text-dark text-center fw-bolder">Masuk</h3>
-      <form method="post">
-        {%csrf_token%} {{form.as_p}}
-        <button type="submit" class="btn btn-dark">Masuk</button>
-      </form>
+
+<section class="vh-100" style="background-color: #508bfc">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-4">
+            <h3 class="mb-2 text-center">Sign in</h3>
+
+            <form method="post">
+              {%csrf_token%}
+              <div class="form-outline">
+                <label class="form-label mt-2" for="id_username"
+                  >Username</label
+                >
+                {{form.username}}
+              </div>
+              <div class="form-outline mt-2">
+                <label for="id_password " class="form-label">Password </label>
+                {{form.password}}
+              </div>
+              <button type="submit" class="btn btn-dark mt-3">Masuk</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 {%endblock%}

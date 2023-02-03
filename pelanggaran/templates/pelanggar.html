@@ -1,16 +1,18 @@
 {%extends 'base.html'%} {%block content%}
 <div class="row">
-  <div class="col-md-4 m-auto">
-    <div class="card p-3 m-auto mt-5">
-      <h3 class="text-center py-3 text-dark">Tambah Pelanggar</h3>
+  <div class="col-md-4 col-8 m-auto">
+    <div class="card p-3 m-auto mt-3">
+      <h5 class="text-center p-2 text-dark">Tambah Pelanggar</h5>
       <form method="post">
         {%csrf_token%} {%if messages%} {%for m in messages%}
         <div class="alert alert-success" role="alert">{{m}}</div>
-        {%endfor%} {%endif%}{{form.as_p }}
+        {%endfor%} {%endif%} {{form.as_p}}
         <button type="submit" class="btn btn-primary">Tambah</button>
       </form>
     </div>
   </div>
 </div>
+
+<!-- Initialize Select2 on the select field -->
 
 {%endblock%}

@@ -1,0 +1,48 @@
+{%extends 'base.html' %} {%block content%}
+<!-- navbar start -->
+
+<!-- navbar end -->
+<div class="container">
+
+
+<h2 class="text-center fw-bolder text-dark mt-3 " >Data Pelanggar</h2>
+
+<p class="text-dark fw-bolder ">Jumlah Pelanggar:{{total}} orang</p>
+<table class="table mt-3 table-striped" id="dataTable" style="width: 100%;">
+  <thead class="bg-dark  text-light fw-bold text-center upper">
+    <tr>
+      <th>Nama Siswa</th>
+      <th >Kelas</th>
+      <th class="mobile">pelanggaran</th>
+      <th>tanggal</th>
+      <th >penulis</th>
+
+    </tr>
+  </thead>
+  <tbody class="bg-light py-3">
+    <tr {%for p in langgar%}>
+      <td><a href="/detail/{{p.siswa.id}}" class="text-decoration-none">{{p.siswa.nama_siswa}}</a></td>
+      <td >{{p.siswa.kelas}}</td>
+      <td class="mobile">{{p.pelanggaran}}</td>
+      <td>{{p.tanggal}}</td>
+      <td >{{p.user}}</td>
+     
+    </tr {%endfor%}>
+  </tbody>
+</table>
+{%for p in langgar%}
+<div class="list-group"  id="dataList"  >
+  <a href="/detail/{{p.siswa.id}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{p.siswa.nama_siswa}}</h5>
+      <small>{{p.tanggal}}</small>
+    </div>
+    <p class="mb-1">{{p.siswa.kelas}}</p>
+    <small>{{p.pelanggaran}}</small>
+    
+  </a >
+
+</div  >
+{%endfor%}
+</div>
+{%endblock%}

@@ -1,0 +1,18 @@
+{%extends 'base.html'%} {%block content%}
+<div class="row">
+  <div class="col-md-4 m-auto mt-5">
+    <div class="card p-3">
+      <h3>tambah Pelanggaran</h3>
+      <form method="post">
+        {%csrf_token%}{%if messages%} {%for m in messages%}
+        <div class="alert alert-success" role="alert">{{m}}</div>
+        {%endfor%} {%endif%}
+        <input type="tex" name="jenis_pelanggaran" class="form-control" />
+        <button type="submit" class="btn btn-primary mt-3">
+          Tambah Pelanggaran
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}

@@ -1,8 +1,15 @@
 {%extends 'base.html' %}{%block content%}
-<h3>tambah kelas</h3>
-<form method="post">
-  {%csrf_token%}
-  <input type="tex" name="nama_kelas" />
-  <button type="submit">Tambah Kelas</button>
-</form>
+<div class="row">
+  <div class="col-md-4 m-auto mt-5">
+    <div class="card p-3">
+      <h3>tambah kelas</h3>
+      <form method="post">
+        {%csrf_token%}
+        <input type="tex" name="nama_kelas" class="form-control" />
+        <button type="submit" class="btn btn-primary mt-3">Tambah Kelas</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 {%endblock%}
