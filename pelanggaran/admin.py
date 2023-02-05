@@ -5,3 +5,4 @@ admin.site.register(Kelas)
 admin.site.register(Siswa)
 admin.site.register(Pelanggaran)
 admin.site.register(pelanggar)
+

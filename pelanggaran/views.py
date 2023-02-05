@@ -71,12 +71,15 @@ def siswa(req):
     return render(req,'siswa.html',konteks)
 
 def pelanggaran(req):
+        petugas = User.objects.all()
         all = pelanggar.objects.all()
         langgar = pelanggar.objects.all().order_by('-id')
         total = all.count()
+        user = petugas.count()
         konteks = {
             'langgar' : langgar,
             'total' : total,
+            'user':user,
             
     }
         return render(req,'homepage.html',konteks)
@@ -102,11 +105,15 @@ def detail_siswa(req,id_siswa):
 
 @login_required(login_url='masuk')
 def adminpage(req):
+    langgar = pelanggar.objects.all().count()
     nama = Siswa.objects.all()
-
+    total = nama.count()
+    petugas = User.objects.all().count()
     konteks ={
         'nama':nama,
-       
+       'total':total,
+       'petugas':petugas,
+       'langgar':langgar,
     }
     return render(req,'adminpage.html',konteks)
 

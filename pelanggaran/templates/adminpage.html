@@ -1,5 +1,5 @@
-{%extends 'base.html'%} {%block content%}
-<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
+{%extends 'admin.html'%} {%block content%}
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
   <div class="container-fluid">
     <a class="navbar-brand text-light fw-bolder" href="#">SMKN4 </a>
     <button
@@ -96,8 +96,58 @@
       </form>
     </div>
   </div>
-</nav>
+</nav> -->
 
 <p>selamat datang {{user}}</p>
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>{{total}}</h3>
+
+        <p>Total Siswa</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{petugas}}</h3>
+
+        <p>Total Petugas</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <!-- small card -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>{{langgar}}</h3>
+
+        <p>pelanggar</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <a href="#" class="small-box-footer">
+        More info <i class="fas fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
 
 {%endblock%}
