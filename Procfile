@@ -1,1 +1,1 @@
-web: gunicorn 'pelanggaran.wsgi'
+web: gunicorn 'kesiswaan.wsgi'
