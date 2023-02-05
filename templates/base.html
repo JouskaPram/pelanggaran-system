@@ -48,7 +48,7 @@
     />
     <script src="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css"></script>
     {%load static%}
-    <link rel="stylesheet" href="{%static 'staticfiles/css/style.css'%}" />
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
     <style>
       .fixed-nav {
         position: fixed;
@@ -87,7 +87,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    >
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
@@ -109,7 +109,8 @@
       href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
       rel="stylesheet"
     />
-
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.12.0/js/jquery.overlayScrollbars.min.js"></script>
     <script>
@@ -119,9 +120,9 @@
           ordering: false,
           lengthChange: false,
         });
-        $("#dataTable_filter label").addClass("ms-5 fw-bold ml-5");
+        $("#dataTable_filter label").addClass(" fw-bold ms-5");
         $("#dataTable_filter input").addClass(
-          "form-control-md w-75 text-start me-5"
+          "form-control-md w-75 text-start "
         );
       });
 
