@@ -47,7 +47,7 @@
       <div class="card bg-warning">
         <div class="card-body">
           <h5 class="card-title text-dark fw-bold">Nama: {{nama}}</h5>
-          <h6 class="card-text">Kelas: {{nama.kelas}}</h6>
+          <h6 class="card-text text-dark fw-bold">Kelas: {{nama.kelas}}</h6>
           <p class="card-text">
             Karena {{nama}} sudah melakukan pelanggaran sebanyak {{total}} kali
             maka mendapatkan hukuman berupa {{pesan}}
@@ -63,10 +63,10 @@
       class="list-group-item list-group-item-action flex-column align-items-start"
     >
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1 fw-bolder">{{p.user}}</h5>
+        <h5 class="mb-1 fs-5">{{p.pelanggaran}}</h5>
         <small>{{p.tanggal}}</small>
       </div>
-      <p class="mb-1 fs-6 fw-semibold">{{p.pelanggaran}}</p>
+      <p class="mb-1 fs-6">penulis: {{p.user}}</p>
     </div>
   </div>
   {%endfor%}

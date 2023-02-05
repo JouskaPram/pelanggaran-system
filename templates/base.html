@@ -47,8 +47,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css"
     />
     <script src="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css"></script>
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+
     <style>
       .fixed-nav {
         position: fixed;
@@ -75,6 +74,40 @@
         to {
           transform: scale(1.1);
         }
+      }
+      #dataTable label {
+        display: none;
+      }
+      /* @media screen and (max-width: 800px) {
+        table {
+          display: none;
+        }
+        table {
+          font-size: 10px;
+        }
+        #dataTable_wrapper {
+          display: none;
+        }
+      }
+      @media screen and (min-width: 801px) {
+        .list-group {
+          display: none;
+        }
+      } */
+      input {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       }
     </style>
   </head>
@@ -109,8 +142,7 @@
       href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
       rel="stylesheet"
     />
-    {%load static%}
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.12.0/js/jquery.overlayScrollbars.min.js"></script>
     <script>
@@ -120,9 +152,9 @@
           ordering: false,
           lengthChange: false,
         });
-        $("#dataTable_filter label").addClass(" fw-bold ms-5");
+        $("#dataTable_filter label").addClass("ms-5 fw-bold ml-5");
         $("#dataTable_filter input").addClass(
-          "form-control-md w-75 text-start "
+          "form-control-md w-75 text-start me-5"
         );
       });
 
