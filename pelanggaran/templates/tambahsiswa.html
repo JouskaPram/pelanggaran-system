@@ -1,6 +1,14 @@
-{%extends 'base.html' %} {%block content%}
-<form method="post">
-  {%csrf_token%} {{form.as_p}}
-  <button type="submit">Tambah</button>
-</form>
+{%extends 'admin.html' %} {%block content%}
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Tambah Siswa</h6>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {%csrf_token%} {{form.as_p}}
+      <button type="submit" class="btn btn-primary">Tambah</button>
+    </form>
+  </div>
+</div>
 {%endblock%}

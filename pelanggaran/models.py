@@ -13,6 +13,7 @@ class Siswa(Model):
         return(self.nama_siswa)
 class Pelanggaran(Model):
     jenis_pelanggaran= TextField()
+    point = IntegerField()
     def __str__(self):
         return(self.jenis_pelanggaran)
 

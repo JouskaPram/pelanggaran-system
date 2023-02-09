@@ -50,8 +50,8 @@
       <h5 class="card-header bg-dark text-light">Data Offender</h5>
       <div class="card-body">
         <div class="card-title ">pelanggar : <span class="badge bg-info text-ligt">{{total}}</span></div>
-
-        <table class="table mt-3 table-striped pb-4  nowrap" id="dataTable" style="width: 100%;">
+        
+        <table class="table mt-3 table-striped pb-4 display nowrap" id="dataTable" style="width: 100%;">
       <thead class="bg-dark  text-light fw-bold text-center upper">
         <tr>
           <th>Nama Siswa</th>
@@ -66,7 +66,7 @@
         <tr {%for p in langgar%}>
           <td><a href="/detail/{{p.siswa.id}}" class="text-decoration-none">{{p.siswa.nama_siswa}}</a></td>
           <td >{{p.siswa.kelas}}</td>
-          <td class="mobile">{{p.pelanggaran}}</td>
+          <td >{{p.pelanggaran.jenis_pelanggaran}}</td>
           <td>{{p.tanggal}}</td>
           <td >{{p.user}}</td>
          

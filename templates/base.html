@@ -75,9 +75,7 @@
           transform: scale(1.1);
         }
       }
-      #dataTable label {
-        display: none;
-      }
+
       /* @media screen and (max-width: 800px) {
         table {
           display: none;
@@ -88,12 +86,16 @@
         #dataTable_wrapper {
           display: none;
         }
-      }
-      @media screen and (min-width: 801px) {
-        .list-group {
-          display: none;
-        }
       } */
+      @media screen and (max-width: 801px) {
+        .dataTables_paginate {
+          text-align: center;
+        }
+        .dataTables_paginate {
+          display: block;
+          margin-bottom: 10px;
+        }
+      }
       input {
         display: block;
         width: 100%;
@@ -148,6 +150,7 @@
     <script>
       $(document).ready(function () {
         $("#dataTable").DataTable({
+          pagingType: "simple",
           responsive: true,
           ordering: false,
           lengthChange: false,

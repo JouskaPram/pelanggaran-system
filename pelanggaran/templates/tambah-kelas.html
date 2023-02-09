@@ -1,15 +1,14 @@
-{%extends 'base.html' %}{%block content%}
-<div class="row">
-  <div class="col-md-4 m-auto mt-5">
-    <div class="card p-3">
-      <h3>tambah kelas</h3>
-      <form method="post">
-        {%csrf_token%}
-        <input type="tex" name="nama_kelas" class="form-control" />
-        <button type="submit" class="btn btn-primary mt-3">Tambah Kelas</button>
-      </form>
-    </div>
+{%extends 'admin.html' %}{%block content%}
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Tambah Kelas</h6>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {%csrf_token%}
+      <input type="tex" name="nama_kelas" class="form-control" />
+      <button type="submit" class="btn btn-primary mt-3">Tambah Kelas</button>
+    </form>
   </div>
 </div>
-
 {%endblock%}

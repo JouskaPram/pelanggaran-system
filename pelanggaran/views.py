@@ -89,16 +89,28 @@ def detail_siswa(req,id_siswa):
     nama = Siswa.objects.get(id=id_siswa)
     catatan = pelanggar.objects.filter(siswa=id_siswa)
     total = catatan.count()
-    if total<10:
-        pesan = 'membersihkan masjid'
-    elif total>10:
-        pesan = 'panggil orang tua'
-    else:
-        pesan = 'tidak ada'
+    base = 100
+    each = Pelanggaran.objects.filter(pelanggar__in=catatan).values("point")
+    
+    points = base
+    if points < 0:
+     points = 0
+    elif points > 100:
+     points = 100
+
+    for item in each:
+        points -= item["point"]
+    if points < 50:
+       pesan = "paggil orang tua"
+    elif points > 50:
+        pesan = "bersihin masjid"
     konteks = {'catatan' : catatan,
         'nama':nama,
         'total':total,
-        'pesan':pesan
+        'points':points,
+        'pesan':pesan,
+       
+       
   
     }
     return render(req,'detail-pelanggar.html',konteks)
@@ -109,11 +121,32 @@ def adminpage(req):
     nama = Siswa.objects.all()
     total = nama.count()
     petugas = User.objects.all().count()
+    kelas = Kelas.objects.all().count()
+    name = pelanggar.objects.all()
+    rank = pelanggar.objects.values('siswa')
+    counter = rank.annotate(jumlah=Count('siswa'))[:5]
+    people = pelanggar.objects.all().order_by('-siswa')
+
     konteks ={
-        'nama':nama,
+    'nama':nama,
        'total':total,
        'petugas':petugas,
        'langgar':langgar,
+       'kelas':kelas,
+       'counter':counter,
+       'name':name,
+       'people':people
+     
+    
     }
     return render(req,'adminpage.html',konteks)
+
+
+@login_required(login_url='masuk')
+def pelanggaranpage(req):
+    all = Pelanggaran.objects.all()
+    konteks = {
+        'all':all
+    }
+    return render(req,'pelanggaran.html',konteks)
 

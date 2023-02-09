@@ -27,16 +27,6 @@
           >
         </li>
       </ul>
-      <form class="d-flex" method="post">
-        {%csrf_token%}
-        <input
-          class="form-control me-2"
-          name="cari"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-      </form>
     </div>
   </div>
 </nav>
@@ -46,11 +36,27 @@
     <div class="col-md-6 col-sm-12">
       <div class="card bg-warning">
         <div class="card-body">
+          {% if punishment %}
+          <div class="alert alert-danger">{{ punishment }}</div>
+          {% endif %}
           <h5 class="card-title text-dark fw-bold">Nama: {{nama}}</h5>
           <h6 class="card-text text-dark fw-bold">Kelas: {{nama.kelas}}</h6>
-          <p class="card-text">
-            Karena {{nama}} sudah melakukan pelanggaran sebanyak {{total}} kali
-            maka mendapatkan hukuman berupa {{pesan}}
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Example with label"
+            aria-valuenow="{{points}}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="progress-bar" style="width: {{points}}%">
+              {{points}}%
+            </div>
+          </div>
+          <p class="card-text">jumlah pelanggaran : {{total}} kali</p>
+          <p class="car-text">
+            Atas tindakan Yang {{nama}} lakukan maka mendapatkan hukuman berupa
+            {{pesan}}
           </p>
         </div>
       </div>
@@ -67,6 +73,7 @@
         <small>{{p.tanggal}}</small>
       </div>
       <p class="mb-1 fs-6">penulis: {{p.user}}</p>
+      <small>Points:{{p.pelanggaran.point}}</small>
     </div>
   </div>
   {%endfor%}

@@ -9,6 +9,7 @@ urlpatterns = [
     path('tambahsiswa/',tambah_siswa,name='tambah_siswa'),
     path('tambahpelanggar/',tambah_pelanggar,name='tambah_pelanggar'),
     path('tambahpelanggaran/',tambah_pelanggaran,name='tambahpelanggaran'),
+    path('pelanggaran/',pelanggaranpage,name="pelanggaranpage"),
     path('siswa/',siswa,name='siswa'),
     path('',pelanggaran,name='homepage'),
     path('adminpage/',adminpage,name='adminpage'),

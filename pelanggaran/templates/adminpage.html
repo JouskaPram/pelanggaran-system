@@ -100,54 +100,95 @@
 
 <p>selamat datang {{user}}</p>
 <div class="row">
-  <div class="col-lg-3 col-6">
-    <!-- small card -->
-    <div class="small-box bg-success">
-      <div class="inner">
-        <h3>{{total}}</h3>
-
-        <p>Total Siswa</p>
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+            >
+              Total Siswa
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{total}}</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
       </div>
-      <div class="icon">
-        <i class="fas fa-user-plus"></i>
-      </div>
-      <a href="#" class="small-box-footer">
-        More info <i class="fas fa-arrow-circle-right"></i>
-      </a>
     </div>
   </div>
-  <div class="col-lg-3 col-6">
-    <!-- small card -->
-    <div class="small-box bg-info">
-      <div class="inner">
-        <h3>{{petugas}}</h3>
-
-        <p>Total Petugas</p>
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+            >
+              Petugas
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{petugas}}
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
       </div>
-      <div class="icon">
-        <i class="fas fa-user-plus"></i>
-      </div>
-      <a href="#" class="small-box-footer">
-        More info <i class="fas fa-arrow-circle-right"></i>
-      </a>
     </div>
   </div>
-  <div class="col-lg-3 col-6">
-    <!-- small card -->
-    <div class="small-box bg-danger">
-      <div class="inner">
-        <h3>{{langgar}}</h3>
-
-        <p>pelanggar</p>
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+            >
+              kelas
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{kelas}}</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
       </div>
-      <div class="icon">
-        <i class="fas fa-user-plus"></i>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-danger shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+            >
+              Pelanggar
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{langgar}}
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
       </div>
-      <a href="#" class="small-box-footer">
-        More info <i class="fas fa-arrow-circle-right"></i>
-      </a>
     </div>
   </div>
 </div>
-
+<table>
+  <tr>
+    <td>nama</td>
+    <td>jumlah</td>
+  </tr>
+  <tr {%for r in counter%} >
+    <td>{{r.siswa.nama_siswa}}</td>
+    <td>{{r.jumlah}}</td>
+  </tr  {%endfor%}>
+</table>
 {%endblock%}
