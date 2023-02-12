@@ -18,12 +18,12 @@ class FormPelanggar(ModelForm):
 
 
         widgets = {
-            'siswa': forms.Select(attrs={'class': 'form-control  select2 '}),
-            'pelanggaran': forms.Select(attrs={'class': 'form-control  select2'}),
+            'siswa': forms.Select(attrs={'class': 'form-select  select2 '}),
+            'pelanggaran': forms.Select(attrs={'class': 'form-select  select2'}),
             'nisn': forms.NumberInput(attrs={'class': 'form-control'}),
             'nama_siswa': forms.TextInput(attrs={'class': 'form-control'}),
-            'kelas': forms.Select(attrs={'class': 'form-control select2'}),
-            'nama_kelas': forms.Select(attrs={'class': 'form-control select2'}),
+            'kelas': forms.Select(attrs={'class': 'form-select select2'}),
+            'nama_kelas': forms.Select(attrs={'class': 'form-select select2'}),
          
 
         }
