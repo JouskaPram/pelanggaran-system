@@ -11,9 +11,11 @@ urlpatterns = [
     path('tambahpelanggaran/',tambah_pelanggaran,name='tambahpelanggaran'),
     path('pelanggaran/',pelanggaranpage,name="pelanggaranpage"),
     path('siswa/',siswa,name='siswa'),
+    path('documentation/',documentation,name='documentation'),
     path('',pelanggaran,name='homepage'),
     path('adminpage/',adminpage,name='adminpage'),
     path('masuk/',LoginView.as_view(),name="masuk"),
     path('keluar/',LogoutView.as_view(),name="keluar"),
     path('detail/<int:id_siswa>',detail_siswa,name="detail_siswa"),
+    path('pelanggaran/delete/<int:id_pelanggaran>',delete_pelanggaran,name="delete_pelanggaran"),
 ]

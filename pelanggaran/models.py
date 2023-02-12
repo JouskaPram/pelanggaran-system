@@ -22,5 +22,10 @@ class pelanggar(Model):
     siswa = ForeignKey(Siswa,on_delete=CASCADE)
     pelanggaran = ForeignKey(Pelanggaran,on_delete=CASCADE)
     user = ForeignKey(User,on_delete=CASCADE)
+    status_choices = (
+    ('aman', 'aman'),
+    ('dihukum', 'dihukum'),
+  )
+
     def __str__(self):
         return self.siswa.nama_siswa

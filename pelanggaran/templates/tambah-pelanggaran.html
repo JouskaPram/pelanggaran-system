@@ -2,15 +2,24 @@
 <div class="row">
   <div class="col-md-4 m-auto mt-5">
     <div class="card p-3">
-      <h3>tambah Pelanggaran</h3>
+      <h3 class="text-center">tambah Pelanggaran</h3>
       <form method="post">
         {%csrf_token%}{%if messages%} {%for m in messages%}
         <div class="alert alert-success" role="alert">{{m}}</div>
         {%endfor%} {%endif%}
-        <input type="tex" name="jenis_pelanggaran" class="form-control" />
-        <button type="submit" class="btn btn-primary mt-3">
-          Tambah Pelanggaran
-        </button>
+        <input
+          type="text"
+          name="jenis_pelanggaran"
+          class="form-control my-2"
+          placeholder="Nama Pelanggaran"
+        />
+        <input
+          type="number"
+          name="point"
+          class="form-control my-2"
+          placeholder="Point"
+        />
+        <button type="submit" class="btn btn-primary mt-3">Tambah</button>
       </form>
     </div>
   </div>

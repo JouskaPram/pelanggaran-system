@@ -41,7 +41,7 @@
           {% endif %}
           <h5 class="card-title text-dark fw-bold">Nama: {{nama}}</h5>
           <h6 class="card-text text-dark fw-bold">Kelas: {{nama.kelas}}</h6>
-          <div
+          <!-- <div
             class="progress"
             role="progressbar"
             aria-label="Example with label"
@@ -52,6 +52,20 @@
             <div class="progress-bar" style="width: {{points}}%">
               {{points}}%
             </div>
+          </div> -->
+          <h1>{{status}}</h1>
+          <h4 class="small font-weight-bold">
+            Sisa Point <span class="float-right">{{points}}/100</span>
+          </h4>
+          <div class="progress mb-4">
+            <div
+              class="progress-bar bg-danger"
+              role="progressbar"
+              style="width: {{points}}%"
+              aria-valuenow="{{points}}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <p class="card-text">jumlah pelanggaran : {{total}} kali</p>
           <p class="car-text">

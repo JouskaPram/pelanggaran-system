@@ -17,6 +17,7 @@ def tambah_pelanggaran(req):
     if req.POST:
         Pelanggaran(
             jenis_pelanggaran = req.POST['jenis_pelanggaran'],
+            point = req.POST['point'],
 
         ).save()
         messages.success(req,"data berhasil di tambahkan")
@@ -85,7 +86,7 @@ def pelanggaran(req):
         return render(req,'homepage.html',konteks)
 
 def detail_siswa(req,id_siswa):
-   
+    
     nama = Siswa.objects.get(id=id_siswa)
     catatan = pelanggar.objects.filter(siswa=id_siswa)
     total = catatan.count()
@@ -103,15 +104,13 @@ def detail_siswa(req,id_siswa):
     if points < 50:
        pesan = "paggil orang tua"
     elif points > 50:
+ 
         pesan = "bersihin masjid"
     konteks = {'catatan' : catatan,
         'nama':nama,
         'total':total,
         'points':points,
         'pesan':pesan,
-       
-       
-  
     }
     return render(req,'detail-pelanggar.html',konteks)
 
@@ -122,21 +121,31 @@ def adminpage(req):
     total = nama.count()
     petugas = User.objects.all().count()
     kelas = Kelas.objects.all().count()
-    name = pelanggar.objects.all()
-    rank = pelanggar.objects.values('siswa')
-    counter = rank.annotate(jumlah=Count('siswa'))[:5]
-    people = pelanggar.objects.all().order_by('-siswa')
+    catatan = pelanggar.objects.values("siswa")
+    result = Pelanggaran.objects.filter(pelanggar__in=catatan).values("point")
+    points = 100
+    if points < 0:
+     points = 0
+    elif points > 100:
+     points = 100
+
+    for item in result:
+        points -= item["point"]
+    if points < 50:
+       pesan = "bahaya"
+    elif points > 50:
+        
+        pesan = "aman"
+    
 
     konteks ={
-    'nama':nama,
+        'nama':nama,
        'total':total,
        'petugas':petugas,
        'langgar':langgar,
        'kelas':kelas,
-       'counter':counter,
-       'name':name,
-       'people':people
-     
+       'result': result,
+       'pesan':pesan
     
     }
     return render(req,'adminpage.html',konteks)
@@ -149,4 +158,13 @@ def pelanggaranpage(req):
         'all':all
     }
     return render(req,'pelanggaran.html',konteks)
+
+def delete_pelanggaran(req,id_pelanggaran): 
+    nama = Pelanggaran.objects.filter(id=id_pelanggaran)
+    nama.delete()
+    messages.success(req,"data berhasil di hapus")  
+    return redirect('/pelanggaran/')
+
+def documentation(req):
+    return render(req,'documentation.html')
 
