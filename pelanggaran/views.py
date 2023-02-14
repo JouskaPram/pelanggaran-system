@@ -158,13 +158,15 @@ def pelanggaranpage(req):
         'all':all
     }
     return render(req,'pelanggaran.html',konteks)
-
+    
+@login_required(login_url='masuk')
 def delete_pelanggaran(req,id_pelanggaran): 
     nama = Pelanggaran.objects.filter(id=id_pelanggaran)
     nama.delete()
     messages.success(req,"data berhasil di hapus")  
     return redirect('/pelanggaran/')
 
+@login_required(login_url='masuk')
 def documentation(req):
     return render(req,'documentation.html')
 
